@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Product Details</h2>
+<mat-dialog-content>
+  <p><strong>Product Name:</strong> {{ data.product.nameProduct }}</p>
+  <p><strong>Price:</strong> {{ data.product.priceProduct }}</p>
+  <p><strong>Available Quantity:</strong> {{ data.product.quantityProduct }}</p>
+  <mat-label>
+    Quantity:
+    <input
+      type="number"
+      [(ngModel)]="selectedQuantity"
+      (input)="checkQuantity()"
+      min="1"
+      [max]="data.product.quantityProduct"
+      class="form-control w-50"
+    />
+  </mat-label>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="addToCart()"
+    cdkFocusInitial
+    [disabled]="isInvalidQuantity"
+  >
+    Add to Cart
+  </button>
+</mat-dialog-actions>

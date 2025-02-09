@@ -1,0 +1,17 @@
+.badge-large {
+  width: 30px; /* Largeur plus grande */
+  height: 30px; /* Hauteur plus grande */
+  font-size: 16px; /* Texte plus grand */
+  line-height: 30px; /* Alignement vertical */
+  text-align: center;
+  border-radius: 50%; /* Cercle parfait */
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

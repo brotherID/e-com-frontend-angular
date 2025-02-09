@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <h2 class="text-center">Products</h2>
+
+  <div className="card">
+    <!-- Icône panier -->
+    <div class="position-absolute top-0 start-0 m-3">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
+        alt="Cart"
+        width="50"
+      />
+      <span class="badge-large">
+        {{ totalShoppedProduct }}
+      </span>
+    </div>
+
+    <!-- Filtres -->
+    <Form [formGroup]="filterForm">
+      <div class="d-flex justify-content-center mt-3">
+        <div class="row g-2 align-items-center mt-4">
+          <div class="col-auto">
+            <label class="form-label mb-0">Nom du produit :</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="productName"
+            />
+          </div>
+
+          <div class="col-auto">
+            <label class="form-label mb-0">Inventaire :</label>
+            <select
+              class="form-select form-select-sm"
+              formControlName="inventory"
+            >
+              <option value="INSTOCK">INSTOCK</option>
+              <option value="LOWSTOCK">LOWSTOCK</option>
+              <option value="OUTOFSTOCK">OUTOFSTOCK</option>
+            </select>
+          </div>
+
+          <div class="col-auto">
+            <label class="form-label mb-0">Taille de la page :</label>
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              formControlName="pageSize"
+            />
+          </div>
+        </div>
+      </div>
+    </Form>
+  </div>
+
+  <div class="d-flex justify-content-center mt-3">
+    <button class="btn btn-success btn-sm">Add New product</button>
+  </div>
+  <!-- Tableau des produits -->
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Id product</th>
+        <th>Code product</th>
+        <th>Name product</th>
+        <th>Price product</th>
+        <th>Quantity product</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.idProduct }}</td>
+        <td>{{ product.codeProduct }}</td>
+        <td>{{ product.nameProduct }}</td>
+        <td>{{ product.priceProduct }}</td>
+        <td>{{ product.quantityProduct }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="openModal(product)">
+            Add to cart
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center mt-3">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="first">
+          <a class="page-link" (click)="onPageChange(pageNumber - 1)"
+            >Précédent</a
+          >
+        </li>
+        <li
+          class="page-item"
+          [class.active]="page == pageNumber + 1"
+          *ngFor="let page of getTotalPages()"
+        >
+          <a class="page-link" (click)="onPageChange(page - 1)">{{ page }} </a>
+        </li>
+        <li class="page-item" [class.disabled]="last">
+          <a class="page-link" (click)="onPageChange(pageNumber + 1)"
+            >Suivant</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h2 class="mb-4">Liste des Utilisateurs</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User name</th>
+        <th>First name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

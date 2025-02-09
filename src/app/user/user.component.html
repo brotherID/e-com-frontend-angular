@@ -1,0 +1,79 @@
+<!-- <p>user works!</p> -->
+<!-- <div>
+  <span>My store</span>
+</div> -->
+<!-- <p>{{ title }}</p> -->
+
+<div class="container mt-5">
+  <h2 class="mb-4">Formulaire Utilisateur</h2>
+
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    class="border p-4 shadow rounded"
+  >
+    <div class="mb-3">
+      <label class="form-label">UserName</label>
+      <input type="text" class="form-control" formControlName="username" />
+      <div
+        class="text-danger"
+        *ngIf="
+          userForm.get('username')?.invalid && userForm.get('username')?.touched
+        "
+      >
+        Le username est obligatoire (min. 3 caractères)
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">FirstName</label>
+      <input type="text" class="form-control" formControlName="firstname" />
+      <div
+        class="text-danger"
+        *ngIf="
+          userForm.get('firstname')?.invalid &&
+          userForm.get('firstname')?.touched
+        "
+      >
+        Le firstName est obligatoire (min. 3 caractères)
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" />
+      <div
+        class="text-danger"
+        *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+      >
+        Email invalide
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="email" class="form-control" formControlName="password" />
+      <div
+        class="text-danger"
+        *ngIf="
+          userForm.get('password')?.invalid && userForm.get('password')?.touched
+        "
+      >
+        Password invalide
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="userForm.invalid"
+    >
+      Save
+    </button>
+  </form>
+
+  <!-- Affichage des données soumises -->
+  <div class="mt-4 p-3 border bg-light">
+    <h3>Données Soumises :</h3>
+    <pre>{{ userForm.value | json }}</pre>
+  </div>
+</div>

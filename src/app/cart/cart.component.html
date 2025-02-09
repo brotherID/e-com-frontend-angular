@@ -1,0 +1,33 @@
+<p>cart works!</p>
+<!-- Offcanvas Bootstrap -->
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="cartOffcanvas"
+  aria-labelledby="cartOffcanvasLabel"
+>
+  <div class="offcanvas-header">
+    <!-- <h5 id="cartOffcanvasLabel">My Cart ({{ totalShoppedProduct }})</h5> -->
+    <h5 id="cartOffcanvasLabel">My Cart ({{ 1 }})</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- <div *ngIf="totalShoppedProduct === 0" class="text-center">
+        <mat-icon class="text-muted" style="font-size: 50px;">shopping_bag</mat-icon>
+        <p>Your cart is empty.</p>
+      </div> -->
+    <!-- <div *ngIf="totalShoppedProduct > 0">
+        <ul class="list-group">
+          <li *ngFor="let product of cartItems" class="list-group-item d-flex justify-content-between">
+            <span>{{ product.name }}</span>
+            <span>{{ product.quantity }} x {{ product.price | currency }}</span>
+          </li>
+        </ul>
+      </div> -->
+  </div>
+</div>
