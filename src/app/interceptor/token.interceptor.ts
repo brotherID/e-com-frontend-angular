@@ -6,7 +6,10 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const token = authService.getToken();
 
-  const protectedUrls = ['http://localhost:9999/api/v1/products'];
+  const protectedUrls = [
+    'http://localhost:9999/api/v1/products',
+    'http://localhost:9999/api/v1/promotions',
+  ];
 
   console.log(
     'Comparaison des URLs :',

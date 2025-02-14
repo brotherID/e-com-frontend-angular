@@ -10,6 +10,7 @@ export class CartService {
   totalShoppedProduct = this.totalShoppedProductSource.asObservable(); // Observable public
 
   private apiUrlCart = 'http://localhost:9999/api/v1/products';
+  private apiUrlPromotion = 'http://localhost:9999/api/v1/promotions';
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +21,22 @@ export class CartService {
     );
   }
 
+  getCartUser(): Observable<any> {
+    return this.http.get<any>(this.apiUrlCart + '/cart-user');
+  }
+
   updateTotalShoppedProduct(total: number) {
+    //localStorage.setItem('totalShoppedProduct', total.toString());
+    if (total > 0) {
+      localStorage.setItem('totalShoppedProduct', total.toString());
+    } else {
+      localStorage.removeItem('totalShoppedProduct'); // ✅ Supprime `localStorage` si total = 0
+    }
+
     this.totalShoppedProductSource.next(total);
+  }
+
+  applyPromoCode(promoCode: string): Observable<any> {
+    return this.http.get<any>(this.apiUrlPromotion + `/discount/${promoCode}`);
   }
 }

@@ -1,20 +1,17 @@
 <p>cart works!</p>
 <!-- Offcanvas Bootstrap -->
 <div
-  class="offcanvas offcanvas-end"
+  *ngIf="isCartOpen"
+  class="offcanvas offcanvas-end show d-block bg-white shadow"
+  tabindex="-1"
   tabindex="-1"
   id="cartOffcanvas"
   aria-labelledby="cartOffcanvasLabel"
 >
   <div class="offcanvas-header">
     <!-- <h5 id="cartOffcanvasLabel">My Cart ({{ totalShoppedProduct }})</h5> -->
-    <h5 id="cartOffcanvasLabel">My Cart ({{ 1 }})</h5>
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
+    <h5 class="offcanvas-title">My Cart ({{ 1 }})</h5>
+    <button type="button" class="btn-close" (click)="closeCart()"></button>
   </div>
   <div class="offcanvas-body">
     <!-- <div *ngIf="totalShoppedProduct === 0" class="text-center">

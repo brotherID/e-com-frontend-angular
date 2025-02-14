@@ -40,6 +40,7 @@ export class LoginComponent {
           this.router.navigate(['/list-products']);
         },
         error: (err) => {
+          localStorage.removeItem('totalShoppedProduct');
           console.error("❌ Erreur d'authentification", err);
         },
       });
